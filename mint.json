@@ -26,7 +26,7 @@
     "url": "https://engramlabs.xyz"
   },
   "anchors": [],
-  "navigation": [
+"navigation": [
     {
       "group": "Getting Started",
       "pages": [
@@ -35,21 +35,26 @@
       ]
     },
     {
-      "group": "Architecture",
+      "group": "Product",
       "pages": [
         "architecture/overview",
         "architecture/agent-design",
         "architecture/intelligence-layers",
-        "architecture/terminal-design"
+        "architecture/terminal-design",
+        "psychology-layer"
       ]
     },
     {
-      "group": "Product",
+      "group": "Collective Intelligence",
       "pages": [
         "lesson-schema",
         "xp-and-contribution",
-        "membership",
-        "psychology-layer",
+        "membership"
+      ]
+    },
+    {
+      "group": "Project",
+      "pages": [
         "roadmap",
         "faq-and-risks"
       ]
