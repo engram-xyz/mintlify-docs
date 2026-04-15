@@ -1,6 +1,6 @@
 ---
 title: "Agent Design"
-description: "Runtime, skill files, inference pipeline, and execution"
+description: "How each agent operates under the hood"
 ---
 
 ## Runtime
@@ -16,7 +16,7 @@ Skill files are versioned and maintained by the core team. As the lesson library
 ## Inference Pipeline
 
 1. **Bulk data pull** – Background polling fetches market-wide data from all 20 intelligence layers into local caches.
-2. **Local filter** – Deterministic computation (indicators, funding anomalies, OI shifts, volume spikes) narrows 200+ markets to 10-15 candidates. No LLM involved.
+2. **Local filter** – Deterministic computation (indicators, funding anomalies, OI shifts, volume spikes) narrows 200+ markets to 5-10 candidates. No LLM involved.
 3. **LLM reasoning** – Only the filtered shortlist goes to the language model for deep analysis, proposal generation, and natural language reasoning.
 4. **Handler-directed analysis** – The handler can request a deep dive on any specific asset at any time. The agent bypasses the scanner, pulls from cache, fetches fresh data where needed, and delivers a full assessment.
 
