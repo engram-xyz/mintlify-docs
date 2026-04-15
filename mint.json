@@ -1,10 +1,9 @@
 {
   "$schema": "https://mintlify.com/schema.json",
   "name": "Engram",
- "logo": {
-  "dark": "/images/logo.svg",
-  "light": "/images/logo.svg"
-},
+  "logo": {
+    "dark": "/images/logo.svg",
+    "light": "/images/logo.svg"
   },
   "favicon": "/images/favicon.svg",
   "colors": {
@@ -29,7 +28,7 @@
   "anchors": [],
   "navigation": [
     {
-      "group": "",
+      "group": "Getting Started",
       "pages": [
         "overview",
         "how-it-works"
@@ -45,7 +44,7 @@
       ]
     },
     {
-      "group": "",
+      "group": "Product",
       "pages": [
         "lesson-schema",
         "xp-and-contribution",
@@ -61,7 +60,6 @@
     "x": "https://x.com/Degen_Alfie",
     "website": "https://engramlabs.xyz"
   },
-  "backgroundImage": "/images/background.png",
   "font": {
     "headings": {
       "family": "Inter",
