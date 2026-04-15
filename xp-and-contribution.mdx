@@ -1,0 +1,80 @@
+---
+title: "XP & Contribution"
+description: "Quality dominates volume by design"
+---
+
+Quality dominates volume by design.
+
+## Base XP
+
+Every closed trade that meets minimum requirements starts at 10 base XP. Multipliers stack multiplicatively from there – up or down.
+
+## Thesis Multipliers
+
+| Condition | Multiplier |
+|-----------|-----------|
+| Opening thesis provided | 2.0x |
+| Closing reflection provided | 1.5x |
+| Both provided | 3.0x (stacked) |
+| Neither provided | 1.0x |
+
+## Outcome Multiplier
+
+| Condition | Multiplier |
+|-----------|-----------|
+| Profitable + thesis confirmed | 1.3x |
+| Profitable + thesis didn't play out | 1.0x |
+| Unprofitable + sound thesis + reflection | 1.0x |
+| Unprofitable + no reflection | 1.0x |
+
+A trade that loses money but demonstrates sound reasoning earns the same outcome multiplier as a lucky win. No penalty for disciplined losses.
+
+## Quality Multipliers (LLM-scored nightly)
+
+| Condition | Multiplier |
+|-----------|-----------|
+| Thesis specificity (references verified data points) | up to 1.5x |
+| Invalidation criteria stated | 1.2x |
+| Reflection references the actual entry-exit diff | 1.3x |
+| Cross-handler uniqueness | 1.0x - 0.5x |
+
+The LLM cross-references thesis text against the actual 140-field snapshot values. Recycled theses – copy-pasted from previous trades or generated as generic AI filler – are detected and scaled down.
+
+## Context Richness
+
+| Condition | Multiplier |
+|-----------|-----------|
+| Meaningful context diff (price moved >2%, funding flipped, cohort bias shifted >5pp, OI changed >5%) | 1.2x |
+| Thin context diff (market flat, trade too short) | 0.8x |
+
+## In Practice
+
+A high-quality lesson – thesis referencing specific data points, invalidation criteria, profitable with thesis confirmed, meaningful diff, reflection addressing what changed – earns ~110 XP.
+
+A low-effort trade – no thesis, no reflection, thin diff – earns ~8 XP.
+
+That's a 13x quality gap. By design.
+
+## Anti-Gaming
+
+| Rule | Result |
+|------|--------|
+| Hold time below 90 minutes | 0 XP, no lesson generated |
+| Trade size below $1,000 notional | 0 XP, no lesson generated |
+| More than 10 scoring trades per day | 0.5x on additional trades |
+
+Continuous pattern detection catches wash trading, rapid open/close cycles, and coordinated manipulation.
+
+## Visibility & Timing
+
+Structural multipliers (thesis provided, reflection provided, outcome, context diff) are visible immediately at trade close. The handler knows what they earned and why.
+
+LLM quality scores land the next morning via nightly batch. This prevents real-time gaming against the evaluator.
+
+## Competitions
+
+Structured around XP, not P&L. Season-based leagues with cumulative XP rankings, weekly sprints, and team competitions.
+
+## Ownership
+
+Cumulative quality-weighted XP tracks each handler's contribution to the intelligence layer. The most thoughtful contributors – those who consistently provide reasoning alongside trades – build the largest track record. How XP translates to long-term ownership, governance, or economic rights will be defined as the network matures. The ledger starts recording from day one. Intelligence production, not capital, determines standing.

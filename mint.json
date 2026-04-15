@@ -1,0 +1,77 @@
+{
+  "$schema": "https://mintlify.com/schema.json",
+  "name": "Engram",
+  "logo": {
+    "dark": "/images/logo-dark.svg",
+    "light": "/images/logo-light.svg"
+  },
+  "favicon": "/images/favicon.svg",
+  "colors": {
+    "primary": "#5eead4",
+    "light": "#5eead4",
+    "dark": "#0d9488",
+    "background": {
+      "dark": "#080b10",
+      "light": "#ffffff"
+    }
+  },
+  "topbarLinks": [
+    {
+      "name": "Website",
+      "url": "https://engramlabs.xyz"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "Join Waitlist",
+    "url": "https://engramlabs.xyz"
+  },
+  "anchors": [],
+  "navigation": [
+    {
+      "group": "",
+      "pages": [
+        "overview",
+        "how-it-works"
+      ]
+    },
+    {
+      "group": "Architecture",
+      "pages": [
+        "architecture/overview",
+        "architecture/agent-design",
+        "architecture/intelligence-layers",
+        "architecture/terminal-design"
+      ]
+    },
+    {
+      "group": "",
+      "pages": [
+        "lesson-schema",
+        "xp-and-contribution",
+        "membership",
+        "psychology-layer",
+        "roadmap",
+        "faq-and-risks",
+        "team"
+      ]
+    }
+  ],
+  "footerSocials": {
+    "x": "https://x.com/Degen_Alfie",
+    "website": "https://engramlabs.xyz"
+  },
+  "backgroundImage": "/images/background.png",
+  "font": {
+    "headings": {
+      "family": "Inter",
+      "weight": 500
+    },
+    "body": {
+      "family": "Inter",
+      "weight": 400
+    }
+  },
+  "modeToggle": {
+    "default": "dark"
+  }
+}

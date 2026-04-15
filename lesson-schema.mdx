@@ -1,0 +1,50 @@
+---
+title: "Lesson Schema"
+description: "140 fields across 15 categories, captured at entry and exit"
+---
+
+Every trade generates a lesson. This is the core data primitive of the Engram network.
+
+## Structure
+
+A lesson consists of two context snapshots (open and close), a computed diff, optional handler input, and trade metadata. The diff – what changed in the market while the position was open – is how intelligence is built.
+
+## 140 Fields Across 15 Categories
+
+| Category | Fields | What It Captures |
+|----------|--------|-----------------|
+| Market Data | 15 | Price, volume (1h/4h/24h), momentum, spread, mark vs oracle |
+| Positioning Intelligence | 8 | Whale bias, retail bias, cohort divergence, leverage distribution, position concentration |
+| Technical Analysis | 15 | RSI, MACD, Bollinger, EMA alignment, ATR, volume profile, support/resistance, regime |
+| Risk & Correlation | 8 | BTC correlation, portfolio exposure, liquidation distance, sector beta |
+| Trade Details | 18 | Entry/exit params, sizing, leverage, P&L, duration, exit reason |
+| Macro Context | 12 | Fear & Greed, BTC dominance, total market cap, trending narratives, macro regime |
+| Handler Context | 7 | Opening thesis, closing reflection, context notes, conviction level |
+| Handler Stats | 7 | Win/loss streak, recent PnL, win rate, avg hold time, time since last trade |
+| Cross-Exchange Context | 3 | Cross-exchange funding spread, OI divergence, volume share |
+| Execution Quality | 4 | Slippage, fill latency, price impact |
+| Agent Metadata | 6 | Model used, confidence score, reasoning chain, flagged risks, swarm stats |
+| Ecosystem Context | 3 | TVL trend, protocol fees, bridge flows |
+| On-Chain Intelligence | 10 | Smart money flows, exchange inflows/outflows, entity activity |
+| Sentiment & Narrative | 9 | Mindshare, narrative momentum, social volume, sentiment shift |
+| Entity Intelligence | 15 | Labeled wallet activity, institutional flow, exchange-specific positioning |
+
+All 140 fields are sourced directly from locally stored data. The handler's LLM reasons against this data but does not generate it. Lesson quality is determined by market conditions and handler input, not by which model the handler runs.
+
+## Capture Timing
+
+**88 fields** snapshotted at both entry and exit. The diff between open and close snapshots is the lesson. Price moved, positioning shifted, sentiment changed – the model learns what mattered and what didn't.
+
+**38 fields** captured at open only. Forward-looking context that doesn't change during a single trade: handler thesis, conviction level, trade trigger, agent reasoning, setup classification, narrative state, entity positioning, handler trading stats.
+
+**10 fields** captured at close only. Outcome metrics and handler reflection: realized P&L, process grade, exit reason, closing reason, what worked, what didn't.
+
+**4 fields** captured once per trade. Execution metadata: slippage, time to fill, order type, partial fill percentage.
+
+## Why the Diff Matters
+
+The diff between open and close snapshots is the training signal. Every field that changed during the trade – and every field that didn't – becomes a feature the model can weight against the outcome.
+
+At scale, it becomes a structured database of market conditions paired with decisions and results. The model can query across thousands of trades: which positioning configurations preceded winning longs? Which funding regimes produced the best risk-adjusted entries? Which handler conviction levels correlated with follow-through? Where did agent confidence scores diverge from actual outcomes, and why?
+
+The answers aren't hypothetical. They're computed from real trades, real P&L, real market states – captured at the resolution of 140 fields, twice per trade.

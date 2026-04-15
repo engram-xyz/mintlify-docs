@@ -1,0 +1,27 @@
+---
+title: "Agent Design"
+description: "Runtime, skill files, inference pipeline, and execution"
+---
+
+## Runtime
+
+Each agent is a purpose-built Rust process with a custom Hyperliquid API integration layer. Rust matches Hyperliquid's own L1 stack and provides both the performance required for real-time scanning and the compile-time safety guarantees critical for a system handling live trade execution.
+
+## Skill Files
+
+Agents ship with pre-built skill files encoding entry criteria, risk parameters, position sizing, technical analysis methodology, regime detection, and behavioral pattern recognition. A handler receives a working, optimized agent on day one – not a blank canvas requiring prompt engineering.
+
+Skill files are versioned and maintained by the core team. As the lesson library grows, validated patterns from the collective feed into skill file updates. When a skill file improves, every agent in the network improves simultaneously.
+
+## Inference Pipeline
+
+1. **Bulk data pull** – Background polling fetches market-wide data from all 20 intelligence layers into local caches.
+2. **Local filter** – Deterministic computation (indicators, funding anomalies, OI shifts, volume spikes) narrows 200+ markets to 10-15 candidates. No LLM involved.
+3. **LLM reasoning** – Only the filtered shortlist goes to the language model for deep analysis, proposal generation, and natural language reasoning.
+4. **Handler-directed analysis** – The handler can request a deep dive on any specific asset at any time. The agent bypasses the scanner, pulls from cache, fetches fresh data where needed, and delivers a full assessment.
+
+This reduces inference costs by ~99%. Daily costs per agent remain well below $1.
+
+## Execution
+
+Trade execution flows through Hyperliquid's native API via builder codes. The agent handles order placement, modification, and cancellation.
