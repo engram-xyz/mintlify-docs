@@ -1,6 +1,6 @@
 ---
 title: "Terminal Design"
-description: "Conversational interface, chart overlays, and design principles"
+description: "One conversation replaces the entire trading workflow"
 ---
 
 ## Conversational Interface (v1)
@@ -19,6 +19,8 @@ The default terminal has two permanent elements. Everything else is conversation
 
 The interactive chart renders intelligence from the data stack directly onto price action. Eleven overlay layers – from liquidation heatmaps and whale position markers to order flow microstructure and smart money entity tracking – can be toggled independently and stacked simultaneously. When the agent identifies a stop cluster or flags a whale entry during conversation, the relevant zone lights up on the chart. The handler sees what the agent sees, without switching tools or interpreting raw data.
 
+<video autoPlay muted playsInline src="/images/0-13.mp4" />
+
 #### Chart Overlays
 
 | # | Overlay | Source Layers |
@@ -34,6 +36,8 @@ The interactive chart renders intelligence from the data stack directly onto pri
 | 9 | Narrative Event Markers | L4, L11 |
 | 10 | Notable Entity Markers | L12, L13 |
 | 11 | DeFi TVL | L9 |
+
+<video autoPlay muted playsInline src="/images/13-20.mp4" />
 
 ### Conversation Panel
 
@@ -61,6 +65,8 @@ Slash commands pull up any tool as an inline card:
 | /performance | Equity curve, win rate, process grade stats |
 | /outcomes | Active prediction markets, odds, volume, expiry |
 | /swarm | Collective intelligence updates, skill file changelog |
+
+<video autoPlay muted playsInline src="/images/20-38.mp4" />
 
 Trading cards like the order book, live trades, positions, and execution panel render inline in the conversation. Each is draggable – drag it to the chart area to pin it as a persistent panel. The chart resizes to accommodate. Close the panel to restore the full chart. The handler builds their own layout on the fly.
 
