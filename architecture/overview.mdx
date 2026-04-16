@@ -5,18 +5,16 @@ description: "Five layers from data ingestion to collective intelligence"
 
 ## Five layers, each with a distinct responsibility
 
-**Data Ingestion** – Background polling across 20 intelligence layers. WebSocket-first for real-time data, REST as fallback.
+**Data Ingestion** – Background polling across 20 intelligence layers. WebSocket-first for streaming data, REST for snapshot queries and fallback.
 
-**Intelligence Cache** – Structured, queryable representation of current market state indexed by asset. All UI and agent queries read from cache first. Direct API requests are the last resort.
+**Intelligence Cache** –  Structured, queryable representation of current market state indexed by asset. All UI and agent queries read from cache first. Direct API requests are the last resort.
 
-**Agent Reasoning Engine** – Reads from cache, reasons about market state, generates proposals, monitors positions, writes lessons. LLM-agnostic via BYOLLM. Skill files encode the agent's knowledge – versioned, updatable, shared across the network.
+**Agent Reasoning Engine** – Reads from cache, reasons about market state, generates proposals, monitors positions, writes lessons. LLM-agnostic via BYOLLM. Skill files encode the agent's knowledge — versioned, updatable, shared across the network.
 
-**Interaction Layer** – The terminal UI. Conversational interface where the agent panel is the primary interaction surface. Chart and overlays provide supporting context for the conversation.
+**Interaction Layer** – The terminal UI. Conversational interface where the agent panel is the primary surface. Chart and overlays provide supporting context.
 
 **Collective Learning Layer** – Lesson library, pattern extraction, skill file updates. Individual insight becomes collective intelligence.
 
 ## Core Principle
 
-The data stack behind each agent comprises hundreds of individually mapped endpoints across 50+ specialized providers. Every market on Hyperliquid is continuously monitored, with data refreshing as frequently as every second. This is not a collection of API keys – it is a purpose-built intelligence infrastructure.
-
-For component details, see [Agent Design](/architecture/agent-design), [Intelligence Layers](/architecture/intelligence-layers), and [Terminal Design](/architecture/terminal-design).
+The data stack behind each agent comprises hundreds of individually mapped endpoints across 50+ specialized providers. Every market on Hyperliquid is continuously monitored, with the fastest streams updating sub-second. This is not a collection of API keys – it is intelligence infrastructure.
