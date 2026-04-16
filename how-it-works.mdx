@@ -1,71 +1,66 @@
 ---
 title: "How It Works"
-description: "What the agent handles, what the human handles, and how they trade together"
+description: The symbiosis between the human and the machine"
 ---
 
-## The Handler-Agent Model
+## The Trader-Agent Model
 
-Engram separates human and machine roles.
+The agent handles everything that scales: scanning hundreds of markets, computing technical indicators, pulling cached positioning and on-chain data, detecting behavioral patterns, logging snapshots, and generating diff summaries. None of this requires language model inference at scan time. All of it is deterministic computation against APIs and local data – LLM reasoning is invoked only for the filtered shortlist and questioning.
 
-The agent handles everything that scales: scanning hundreds of markets, computing technical indicators, pulling cached positioning and on-chain data, detecting behavioral patterns, logging snapshots, and generating diff summaries. None of this requires language model inference at scan time. All of it is deterministic computation against APIs and local data – LLM reasoning is invoked only for the filtered shortlist.
-
-The handler provides what does not scale: a thesis explaining why a trade makes sense right now, corrections when an agent's setup misfires due to nuanced sentiment shifts, context for events not yet in the quantitative data, and a closing reflection on what the trade revealed.
+The trader provides what does not scale: a thesis explaining why a trade makes sense right now, corrections when an agent's setup misfires due to nuanced sentiment shifts, context for events not yet in the quantitative data, and a closing reflection on what the trade revealed.
 
 ## The Trade Flow
 
-### 1. Agent Scans
+### 1. Trader Asks, Agent Scans
 
-The agent continuously monitors 200+ markets on Hyperliquid. A pre-filter pipeline computes technical indicators locally before invoking the language model. This reduces inference costs by roughly 99%, since only a filtered shortlist of 5-10 candidates requires LLM analysis.
+Most trades start with a question. A trader asks about a specific pair, a market condition, or a thesis they want pressure-tested. The agent pulls the relevant intelligence layers, compresses them, and responds in plain language. Separately, the agent continuously monitors 200+ markets on Hyperliquid. A pre-filter pipeline computes technical indicators locally before invoking the language model, reducing inference costs by roughly 99% – only a filtered shortlist of 5-10 candidates requires LLM analysis. Whether the trader initiates or the agent surfaces something on its own, the next step is the same.
 
 ### 2. Agent Proposes
 
-When the agent identifies a setup that meets its criteria, it presents a structured trade proposal to the handler:
+When a conversation or a scan produces a setup that meets the agent's criteria, it presents a structured trade proposal to the trader:
 
 - Asset pair and direction (long/short)
 - Entry price, stop loss, take profit
 - Leverage and position size
 - Risk as percentage of equity
 - Reasoning – which data layers support the thesis
+– Portfolio context – recent trade history and any open positions that may compound exposure
 
-### 3. Handler Decides
+### 3. Trader Decides
 
-The handler reviews the proposal and responds:
+The trader reviews the proposal and responds:
 
 - **Approve** – Execute as proposed
 - **Modify** – Adjust parameters (move the stop, reduce size, change target)
 - **Reject** – Pass on this setup
 - **Discuss** – Ask the agent questions before deciding
 
-Every interaction is logged. Handler overrides and corrections are the most valuable data in the lesson – they capture where human judgment diverges from machine analysis.
+Every interaction is logged. Trader overrides and corrections are the most valuable data in the lesson — they capture where human judgment diverges from machine analysis.
 
 ### 4. Lesson Captured
 
-At position open, the agent captures a snapshot of market state across 15 categories (140 fields). At position close, it captures an identical snapshot and computes the difference. What changed in volume, funding rates, open interest, whale cohort positioning, sentiment, and smart money flows between entry and exit?
-
-This diff, combined with the trade outcome and the handler's reasoning, produces a structured lesson.
+At position open, the agent captures a snapshot of market state across 15 categories (140 fields). At position close, it captures an identical snapshot and computes the difference. What changed in volume, funding rates, open interest, whale cohort positioning, sentiment, and smart money flows between entry and exit? This diff, combined with the trade outcome and the trader's reasoning, produces a structured lesson.
 
 ### 5. Intelligence Compounds
 
-Lessons sync to the central library. Pattern discovery tooling surfaces candidate patterns through statistical significance testing, embedding-based clustering, and feature importance analysis. A curation team validates these candidates through backtesting, confirms statistical robustness, and encodes proven patterns into shared skill files that all agents receive.
+Lessons sync to the central library. Pattern discovery tooling surfaces candidate patterns through feature importance analysis, unsupervised clustering across market regimes, and statistical validation with multiple-comparison correction. A curation team validates these candidates through backtesting, confirms robustness, and encodes proven patterns into shared skill files that all agents receive. When a skill file improves, every agent in the network improves simultaneously.
 
-When a skill file improves, every agent in the network improves simultaneously.
+## Trader Feedback Channels
 
-## Handler Feedback Channels
-
-Handler feedback enters the system through five channels of increasing friction and value:
+Trader feedback enters the system through five channels of increasing friction and value:
 
 | Channel | Friction | Value | Description |
 |---------|----------|-------|-------------|
 | Trade decisions | Low | Medium | Approve or reject setups through the conversational interface |
 | Corrections | Low | High | Override agent behavior (move stops, adjust size) - logged automatically |
 | Context messages | Medium | High | Share information the agent cannot observe |
-| Lesson ratings | Medium | Medium | Evaluate contributions from other handlers |
+| Lesson ratings | Medium | Medium | Evaluate contributions from other traders |
 | Weekly reviews | High | Very High | Structured reflections surfacing calendar-aware risk factors and broader narratives |
 
-Passive signals are also captured without handler effort: response latency, override frequency, activity patterns, and which agent recommendations are consistently accepted or rejected. Across thousands of handlers, these behavioral signals reveal collective preferences that no individual handler articulates explicitly.
+Passive signals are also captured without trader effort: response latency, override frequency, activity patterns, and which agent recommendations are consistently accepted or rejected. Across thousands of traders, these behavioral signals reveal collective preferences that no individual trader articulates explicitly.
 
 ## Bring Your Own LLM
 
-Handlers connect their own API key from any major inference provider (Anthropic, OpenAI, Gemini, DeepSeek, or others). The agent code supports any OpenAI-compatible endpoint, giving handlers full control over model selection and billing. No third-party middleware sits between the agent and the inference provider.
+Traders connect their own API key from any major inference provider (Anthropic, OpenAI, Gemini, DeepSeek, or others). The agent code supports any OpenAI-compatible endpoint, giving traders full control over model selection and billing. No third-party middleware sits between the agent and the inference provider.
 
 Under normal usage, daily inference costs per agent remain well below $1 at current model pricing.
