@@ -5,22 +5,22 @@ description: "How each agent operates under the hood"
 
 ## Runtime
 
-Each agent is a purpose-built Rust process with a custom Hyperliquid API integration layer. Rust matches Hyperliquid's own L1 stack and provides both the performance required for real-time scanning and the compile-time safety guarantees critical for a system handling live trade execution.
+Each agent is a purpose-built Rust process with direct integration to a dedicated Hyperliquid non-validating node. Rust matches HyperCore's own language stack and provides the compile-time safety guarantees critical for a system handling live trade execution. Running our own node gives agents local streams of trades, fills, order statuses, and raw book diffs — allowing us to construct and maintain exchange state locally with faster and more granular data than the public API, and without the rate limits that would otherwise constrain continuous scanning across 200+ markets.
 
 ## Skill Files
 
-Agents ship with pre-built skill files encoding entry criteria, risk parameters, position sizing, technical analysis methodology, regime detection, and behavioral pattern recognition. A handler receives a working, optimized agent on day one – not a blank canvas requiring prompt engineering.
+Agents ship with pre-built skill files encoding entry criteria, risk parameters, position sizing, technical analysis methodology, regime detection, and behavioral pattern recognition. A trader receives a working, optimized agent on day one — not a blank canvas requiring prompt engineering.
 
-Skill files are versioned and maintained by the core team. As the lesson library grows, validated patterns from the collective feed into skill file updates. When a skill file improves, every agent in the network improves simultaneously.
+Skill files are versioned and curated by the core team from the collective lesson library. As validated patterns emerge, they feed into skill file updates. When a skill file improves, every agent in the network improves simultaneously.
 
 ## Inference Pipeline
 
 1. **Bulk data pull** – Background polling fetches market-wide data from all 20 intelligence layers into local caches.
-2. **Local filter** – Deterministic computation (indicators, funding anomalies, OI shifts, volume spikes) narrows 200+ markets to 5-10 candidates. No LLM involved.
-3. **LLM reasoning** – Only the filtered shortlist goes to the language model for deep analysis, proposal generation, and natural language reasoning.
-4. **Handler-directed analysis** – The handler can request a deep dive on any specific asset at any time. The agent bypasses the scanner, pulls from cache, fetches fresh data where needed, and delivers a full assessment.
+2. **Local filter** – Deterministic computation (indicators, funding anomalies, OI shifts, volume spikes, cohort divergence) narrows 200+ markets to 5-10 candidates. No LLM involved.
+3. **LLM reasoning** – Only the filtered shortlist reaches the language model for deep analysis and proposal generation.
+4. **Trader-directed analysis** – The trader can request a deep dive on any specific asset at any time. The agent bypasses the scanner, pulls from cache, fetches fresh data where needed, and delivers a full assessment.
 
-This reduces inference costs by ~99%. Daily costs per agent remain well below $1.
+Local filtering keeps the majority of scanning computation off the LLM, making per-agent operating costs economically viable at scale.
 
 ## Execution
 
