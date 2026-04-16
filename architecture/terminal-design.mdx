@@ -5,13 +5,11 @@ description: "One conversation replaces the entire trading workflow"
 
 ## Conversational Interface (v1)
 
-Handlers interact with their agent through Telegram. The agent scans markets, proposes trades, visualizes data, answers questions, executes trades, captures lessons, and manages positions – all through natural language.
+Traders interact with their agent through Telegram. The agent scans markets, proposes trades, visualizes data, answers questions, executes trades, captures lessons, and manages positions – all through natural language.
 
 ## Agent-Native Terminal (v2)
 
-A conversational interface with a live interactive chart built into it. Every tool, data point, and execution control – perps, spot, DeFi, and prediction markets – can be summoned through dialogue or a single command. The terminal adapts to the handler, not the other way around.
-
-<video autoPlay muted playsInline src="https://res.cloudinary.com/dzgm9jugy/video/upload/v1776243778/0-13_wqqbgy.mp4" />
+A conversational interface built around a live, interactive chart. Every tool, data point, and execution control — perps, spot, DeFi, and prediction markets — can be summoned through dialogue or a single command. The terminal adapts to the trader, not the other way around.
 
 One chat window. One agent. Full execution across the Hyperliquid stack.
 
@@ -19,17 +17,17 @@ The default terminal has two permanent elements. Everything else is conversation
 
 ### Chart Area
 
-The interactive chart renders intelligence from the data stack directly onto price action. Eleven overlay layers – from liquidation heatmaps and whale position markers to order flow microstructure and smart money entity tracking – can be toggled independently and stacked simultaneously. When the agent identifies a stop cluster or flags a whale entry during conversation, the relevant zone lights up on the chart. The handler sees what the agent sees, without switching tools or interpreting raw data.
+The interactive chart renders intelligence from the data stack directly onto price action. Eleven overlay layers – from liquidation heatmaps and whale position markers to order flow microstructure and smart money entity tracking – can be toggled independently and stacked simultaneously. When the agent identifies a stop cluster or flags a whale entry during conversation, the relevant zone lights up on the chart. The trader sees what the agent sees, without switching tools or interpreting raw data.
 
 #### Chart Overlays
 
 | # | Overlay | Source Layers |
 |---|---------|--------------|
 | 1 | Liquidation Heatmap | L1, L3 |
-| 2 | Smart Money Markers | L2 |
+| 2 | Smart Money Markers | L12 |
 | 3 | Cohort Positioning | L2 |
 | 4 | Funding Rate | L1, L3 |
-| 5 | Volume Profile | L1 |
+| 5 | Volume Profile | L1, L8 |
 | 6 | OI Delta Indicator | L1, L3 |
 | 7 | Order Flow (Stop/TP Heatmaps + Volume Delta) | L10 |
 | 8 | Correlation Indicators | L6, L14 |
@@ -37,11 +35,11 @@ The interactive chart renders intelligence from the data stack directly onto pri
 | 10 | Notable Entity Markers | L12, L13 |
 | 11 | DeFi TVL | L9 |
 
-<video autoPlay muted playsInline src="https://res.cloudinary.com/dzgm9jugy/video/upload/v1776243777/13-20_tapeys.mp4" />
+<video autoPlay muted playsInline src="https://res.cloudinary.com/dzgm9jugy/video/upload/v1776319799/0-21_ibcwmk.mp4" />
 
 ### Conversation Panel
 
-The conversation panel is the primary interaction surface – not a sidebar or a chat box. Beyond dialogue with the agent, it's where order books, positions, execution controls, account data, and scanner results are summoned as interactive cards. It shapeshifts into whatever the trader needs with just a couple of keystrokes.
+The conversation panel is the primary interaction surface — where dialogue, order books, positions, execution controls, account data, and scanner results all live as interactive cards. It adapts to whatever the trader needs with just a couple of keystrokes.
 
 Conversational navigation: Type `$BTC` to load a chart. Type `$BTC $GOLD` for side-by-side. The agent immediately begins scanning the loaded asset.
 
@@ -54,11 +52,10 @@ Slash commands pull up any tool as an inline card:
 | /balances | Wallet balances and asset breakdown |
 | /positions | Open positions with P&L |
 | /orders | Open orders and fill percentages |
-| /twap | Time-weighted average price execution |
 | /history | Recent trade history |
 | /funding | Funding payment history |
 | /execute | Manual execution panel (size, leverage, TP/SL) |
-| /account | Account balance, margin, equity |
+| /equity | Account balance, margin, equity |
 | /setups | Active scanner results, ranked by quality |
 | /lessons | Lesson library browser |
 | /transfer | Deposit and withdraw funds |
@@ -66,30 +63,34 @@ Slash commands pull up any tool as an inline card:
 | /outcomes | Active prediction markets, odds, volume, expiry |
 | /swarm | Collective intelligence updates, skill file changelog |
 
-<video autoPlay muted playsInline src="https://res.cloudinary.com/dzgm9jugy/video/upload/v1776243775/20-38_l4yb44.mp4" />
+<video autoPlay muted playsInline src="https://res.cloudinary.com/dzgm9jugy/video/upload/v1776320636/21_48_nbggww.mp4" />
 
-Trading cards like the order book, live trades, positions, and execution panel render inline in the conversation. Each is draggable – drag it to the chart area to pin it as a persistent panel. The chart resizes to accommodate. Close the panel to restore the full chart. The handler builds their own layout on the fly.
+Trading cards like the order book, live trades, positions, and execution panel render inline in the conversation. Each is draggable – drag it to the chart area to pin it as a persistent panel. The chart resizes to accommodate. Close the panel to restore the full chart. The trader builds their own layout on the fly.
 
 ### HyperEVM Integrations
 
-The same command system extends into the broader Hyperliquid ecosystem. Partner protocol actions execute as inline cards without leaving the conversation:
+The same command system extends into the broader Hyperliquid ecosystem. Protocol actions execute as inline cards without leaving the conversation:
 
 | Command | Action |
 |---------|--------|
-| /swap | Spot swap via PRJX |
-| /stake | Stake HYPE via Kinetiq |
-| /lend | Lending on HyperLend |
-| /borrow | Borrowing via Felix |
+| /swap | Spot swap |
+| /stake | HYPE staking |
+| /lend | Lending |
+| /borrow | Borrowing |
 | /portfolio | Assets and positions across HyperEVM |
 
-Every financial primitive on HyperEVM, one agent.
+HyperEVM integration launches with a curated set of protocol partners. Specific launch partners will be announced as integrations finalize.
+
+The core primitives on HyperEVM, one agent.
 
 ## Design Principles
 
-**Talk, don't click.** Engram reduces the entire trading workflow to a conversation. Type what you need, get what you want. Every chart overlay, every data point, every trade execution is one sentence or one command away.
+**Talk, don't click.** Engram reduces the entire trading workflow to a conversation. Type what you need, get what you want. Chart overlays, data points, trade execution — one sentence or one command away.
 
 **Nothing interrupts the flow.** No popups, no tab switching, no context loss. Trade modifications expand inline. Position management happens within cards. The trader stays in one continuous stream of thought from analysis to execution.
 
 **The chart illustrates the conversation.** Overlays activate, zones highlight, and data surfaces on the chart as the agent discusses it. The visual and the verbal are one interface, not two.
 
-**Always instant.** Core market data streams continuously into local caches. Switching assets, toggling overlays, pulling up tools – the terminal responds instantly. Deeper analysis fetches fresh data when the agent or handler needs it.
+**Always instant.** Core market data streams continuously into local caches. Switching assets, toggling overlays, pulling up tools – the terminal responds instantly. Deeper analysis fetches fresh data when the agent or trader needs it.
+
+**The trader decides.** No trade executes without explicit approval. The agent proposes, sizes, and stages – the trader confirms, modifies, or rejects. Conversational speed never bypasses deliberate execution.
