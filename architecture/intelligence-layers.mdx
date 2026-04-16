@@ -3,7 +3,7 @@ title: "Intelligence Layers"
 description: "20 data layers across crypto and TradFi, polled continuously"
 ---
 
-Each agent draws from 20 specialized data layers served through background-polled caches. No API calls are triggered by UI interactions – only by agent reasoning.
+Each agent draws from 20 specialized data layers served through background-polled caches. UI interactions read from cache rather than triggering fresh API calls — on-demand fetches happen only when agent reasoning or a trader query requires data beyond cache coverage.
 
 ## Crypto Layers (L1-L13)
 
@@ -12,32 +12,32 @@ Powering every agent's comprehensive analysis across 200+ perpetual and spot mar
 | Layer | Name | What It Provides |
 |-------|------|-----------------|
 | L1 | Exchange Data | Real-time prices, volume, funding rates, open interest, order book depth, execution, portfolio state. Direct from Hyperliquid. |
-| L2 | Positioning Intelligence | Wallet cohort positioning across 16 segments (8 size-based, 8 PnL-based): bias scores, exposure ratios, leverage distribution, liquidation risk by cohort. |
+| L2 | Positioning Intelligence | Wallet cohort positioning across 16 segments (8 by size, 8 by all-time PnL): bias scores, exposure ratios, leverage distribution, liquidation risk by cohort. |
 | L3 | Cross-Exchange Derivatives | Aggregated OI, funding rates, liquidation heatmaps, long/short ratios across all major centralized and decentralized exchanges. |
 | L4 | Catalyst & Fundamentals | Token unlocks, funding rounds, VC cost basis, project profiles, key hires, exchange listing events. |
 | L5 | Market Sentiment Index | Fear & Greed quantified with 30-day historical context. |
 | L6 | Macro Market Context | Total market cap, BTC dominance, sector rotation, trending categories. |
-| L7 | Probabilistic Forecasting | Price percentiles and volatility forecasts from a 200+ ML model ensemble. |
+| L7 | Probabilistic Forecasting | Price percentiles and volatility forecasts from an ensemble of 200+ competing ML models. |
 | L8 | Technical Analysis Engine | RSI, MACD, Bollinger, EMA stacks, ATR, volume profiles, support/resistance detection, regime classification. Computed locally. |
 | L9 | DeFi Protocol Intelligence | TVL flows, DeFi yields, bridge activity, ecosystem fees, token emissions, HyperEVM ecosystem data. |
 | L10 | Order Flow Microstructure | Size-bucketed volume delta (retail, mid, large, whale), stop-loss cluster heatmaps, take-profit cluster heatmaps. |
-| L11 | Narrative & Sentiment | Mindshare tracking, narrative momentum scoring, social sentiment trends, content volume by topic. |
+| L11 | Narrative & Sentiment | Attention share tracking, narrative momentum scoring, social sentiment trends, content volume by topic. |
 | L12 | Smart Money Tracking | Labeled wallet movements, entity-level position tracking, institutional flow detection. |
 | L13 | On-Chain Entity Intelligence | Cross-chain wallet profiling, token flow attribution, exchange deposit/withdrawal tracking by entity. |
 
 ## TradFi Layers (L14-L20)
 
-Covering Hyperliquid's expanding TradFi perpetuals: gold, silver, crude oil, S&P 500, XYZ100, and more.
+Covering Hyperliquid's expanding TradFi perpetuals — gold, silver, crude oil, S&P 500 (via the S&P Dow Jones Indices partnership), and more.
 
 | Layer | Name | What It Provides |
 |-------|------|-----------------|
 | L14 | Benchmark Pricing | Commodity spot/futures prices, equity index levels, forex rates. Reference prices for basis comparison against HL perps. |
-| L15 | Institutional Positioning | Options flow, COT (Commitments of Traders) data, futures OI by participant category. |
+| L15 | Institutional Positioning | Options flow, futures OI by participant category (COT reporting for commodities, 13F filings for equities), weekly positioning shifts. |
 | L16 | Physical Supply Intelligence | Vessel routes and port activity, oil inventory levels, refinery utilization, physical supply chain signals. |
 | L17 | Geopolitical Risk Engine | Conflict event detection, sanctions tracking, prediction market probabilities for geopolitical outcomes. |
 | L18 | Macro Regime Context | Interest rates, inflation data, employment figures, capital flow indicators, yield curves. |
 | L19 | Crop & Climate Fundamentals | WASDE supply/demand balances, satellite crop health monitoring, weather stress indices. |
-| L20 | Satellite & Alternative Intelligence | Satellite imagery analytics, search volume spikes, and on-chain flow tracking for tokenized RWA assets on Hyperliquid. |
+| L20 | Satellite & Alternative Intelligence | Storage fill levels, industrial activity indicators, search volume spikes, and on-chain flow tracking for tokenized RWA assets on Hyperliquid. |
 
 L1-L13 are integrated in v1. L14-L20 are v2.
 
@@ -45,8 +45,8 @@ L1-L13 are integrated in v1. L14-L20 are v2.
 
 All data falls into one of three tiers:
 
-**Immutable** – Cached permanently. Historical candles, closed trade records, completed funding rounds, token unlocks, etc.
+**Immutable** – Cached without expiration. Historical candles, closed trade records, completed funding rounds, token unlocks, etc.
 
-**Volatile** – Cached at polling intervals from 1 second to 8 hours depending on the data type. Live prices refresh in seconds. Cohort positioning and funding rates refresh in minutes. Macro context and sentiment refresh over hours.
+**Volatile** – Cached at polling intervals from 1 second to several hours depending on the data type. Live prices refresh in seconds. Cohort positioning and funding rates refresh in minutes. Macro context and sentiment refresh over hours.
 
 **On-demand** – Fetched fresh only when agent reasoning requires it. Per-asset deep dives, specific cohort breakdowns, detailed analysis for trade candidates.
