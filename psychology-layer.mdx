@@ -3,32 +3,30 @@ title: "Psychology Layer"
 description: "Behavioral detection embedded into agent communication"
 ---
 
-A behavioral detection system is embedded into how the agent communicates on every interaction – not as a standalone feature, but as a core part of the agent's reasoning. The system monitors five behavioral patterns in real time.
+Behavioral detection is a core part of Engram's design – embedded into how the agent communicates, not bolted on as a standalone feature. Five patterns are monitored through a combination of trade history, decision patterns, and conversational cues. The detectors activate progressively as a trader's lesson history accumulates enough signal for the agent to distinguish behavior from noise.
 
 ## Detected Patterns
 
 ### Tilt Detection
 
-Identifies revenge trading or emotional escalation after losses. The agent recognizes when a handler is increasing position sizes, shortening hold times, or ignoring setup criteria following a losing trade. When detected, the agent adjusts its communication: it may recommend a pause, reduce proposed position sizes, or explicitly flag the pattern.
+Revenge trading or emotional escalation after losses. The agent watches for increasing position sizes, shortening hold times, or setup criteria being ignored following a losing trade. When the pattern surfaces, the agent adjusts its communication — recommending a pause, reducing proposed position sizes, or flagging the behavior explicitly.
 
 ### FOMO Detection
 
-Recognizes urgency-driven entries without structural justification. When a handler pushes to enter a rapidly moving market without the agent identifying a valid setup, the system flags the behavior. The agent distinguishes between legitimate momentum trades (supported by data) and emotional chasing (driven by fear of missing out).
+Urgency-driven entries without structural justification. When a trader pushes to enter a rapidly moving market without the agent identifying a valid setup, the mismatch is flagged. The agent distinguishes between legitimate momentum trades (supported by data) and emotional chasing (driven by fear of missing out).
 
 ### Overconfidence Detection
 
-Flags position sizing that exceeds conviction level. If a handler consistently overrides the agent's sizing recommendations upward, or concentrates risk beyond what the setup quality justifies, the system detects the pattern and adjusts its risk commentary.
+Position sizing that exceeds conviction level. When a trader consistently overrides sizing recommendations upward, or concentrates risk beyond what setup quality justifies, the pattern surfaces and the agent responds with more detailed risk framing on subsequent proposals.
 
 ### Anchoring Bias
 
-Identifies fixation on specific price levels without structural basis. When a handler repeatedly references a price target that isn't supported by volume profile, liquidation clusters, or other structural data, the agent notes the anchoring and offers alternative reference points.
+Fixation on specific price levels without structural basis. When a trader's reasoning repeatedly returns to a price that isn't supported by volume profile, liquidation clusters, or other structural data, the agent flags the anchor and offers alternative reference points.
 
 ### Recency Bias
 
-Detects when recent outcomes are being weighted disproportionately in current decisions. A string of wins leading to oversized positions, or a string of losses leading to hesitation on valid setups – the agent recognizes both patterns and calibrates its communication accordingly.
+Recent outcomes weighted disproportionately in current decisions. A string of wins leading to oversized positions, or a string of losses leading to hesitation on valid setups — both patterns surface through the agent's analysis.
 
 ## Why This Matters
 
-Most trading platforms gamify activity. More trades, more engagement, more revenue. Engram's psychology layer does the opposite: it actively discourages bad trades. This is possible because the network's value comes from lesson quality, not trade volume. A handler who trades less but trades well produces more valuable lessons than one who trades constantly but poorly.
-
-The agent is not a cheerleader. It is an honest mirror.
+Most trading platforms optimize for activity — more trades, more engagement. Engram's psychology layer does the opposite: it actively discourages bad trades. The network's value compounds from lesson quality, not trade volume. A trader who trades less but trades well produces more valuable lessons than one who trades constantly but poorly. The agent is not a cheerleader. It is an honest mirror.
