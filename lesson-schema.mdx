@@ -9,18 +9,18 @@ Every trade generates a lesson. This is the core data primitive of the Engram ne
 
 A lesson consists of two context snapshots (open and close), a computed diff, optional trader input, and trade metadata. The diff – what changed in the market while the position was open – is how intelligence is built.
 
-## 140 Fields Across 15 Categories
+## 141 Fields Across 15 Categories
 
 | Category | Fields | What It Captures |
 |----------|--------|-----------------|
 | Trade Details | 18 | Entry/exit params, sizing, leverage, P&L, duration, exit reason |
-| Market Data | 15 | Price, volume (1h/4h/24h), momentum, spread, mark vs oracle |
-| Technical Analysis | 15 | RSI, MACD, Bollinger, EMA alignment, ATR, volume profile, support/resistance, regime |
+| Market Data | 15 | Price, volume, OI, funding, momentum, spread |
+| Technical Analysis | 15 | RSI, MACD, Bollinger, EMA alignment, ATR, volume profile/poc, support/resistance, regime,  |
 | Entity Intelligence | 15 | Labeled wallet activity, institutional flow, exchange-specific positioning |
 | Macro Context | 12 | BTC dominance, total market cap, trending categories, macro regime |
 | On-Chain Intelligence | 10 | Smart money flows, exchange inflows/outflows, entity activity |
 | Sentiment & Narrative | 9 | Mindshare, narrative momentum, social volume, sentiment shift |
-| Positioning Intelligence | 8 | Whale bias, retail bias, cohort divergence, leverage distribution, position concentration |
+| Positioning Intelligence | 9 | Cohort bias, divergence & exposure, leverage distribution, position concentration, liq. risk |
 | Risk & Correlation | 8 | BTC correlation, portfolio exposure, liquidation distance, sector beta |
 | Trader Context | 7 | Opening thesis, closing reflection, context notes, conviction level |
 | Trader Stats | 7 | Win/loss streak, recent PnL, win rate, avg hold time, time since last trade |
