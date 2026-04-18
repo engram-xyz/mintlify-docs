@@ -17,25 +17,25 @@ A lesson consists of two context snapshots (open and close), a computed diff, op
 | Market Data | 15 | Price, volume, OI, funding, momentum, spread |
 | Technical Analysis | 15 | RSI, MACD, Bollinger, EMA alignment, ATR, volume profile, support/resistance, regime |
 | Order Flow & Microstructure | 11 | Retail/whale volume delta, orderbook depth imbalance, SL/TP clusters, cross-exchange OI, funding percentile |
-| Sentiment & Narrative | 9 | Mindshare, narrative momentum, social velocity, sentiment shift, smart follower ratio |
+| Sentiment & Narrative | 9 | Social attention share, narrative momentum, mention velocity, sentiment shift, influencer signal |
 | Positioning Intelligence | 9 | Cohort bias, divergence, exposure ratio, liquidation risk concentration, whale activity, trader count |
 | Risk & Correlation | 9 | BTC correlation, portfolio directional alignment, liquidation clusters, position count, stress testing |
-| On-Chain Intelligence | 8 | Smart money perp flows, exchange netflows, fresh wallet activity, whale vs smart trader divergence |
+| On-Chain Intelligence | 8 | Institutional-scale perp flows, exchange netflows, new wallet activity, large-holder divergence |
 | Macro Context | 8 | Fear & Greed, BTC price, BTC EMA state, BTC dominance, BTC funding, ETH/BTC ratio |
-| Entity Intelligence | 7 | Named entity flows, bridge volume, DeFi leverage exposure, counterparty concentration |
+| Entity Intelligence | 7 | Labeled wallet flows, bridge volume, DeFi leverage exposure, counterparty distribution |
 | Trader Context | 7 | Opening thesis, conviction level, time horizon, trade trigger, closing reflection |
 | Trader Stats | 7 | Win/loss streak, recent PnL, trade frequency, win rate, avg hold time |
 | Agent Metadata | 7 | Confidence score, thesis tag, conviction factors, flagged risks, swarm bias, stop reasoning |
 | Execution Quality | 6 | Slippage, fill latency, order type, fill rate, session, day of week |
 | Counterfactual Context | 5 | Top mover during hold, best alternative setup at entry, opportunity cost ranking |
 
-All 140 fields are sourced directly from locally stored data. The trader's LLM reasons against this data but does not generate it. Lesson quality depends on market conditions and the trader's input, not on which model the agent runs.
+All 140 fields reflect real market conditions and trader actions – not model-generated content. Lesson quality depends on market conditions and the trader's input, not on which model the agent runs.
 
 ## Capture Timing
 
 **88 fields** snapshotted at both entry and exit. The diff between open and close snapshots is the lesson. Price moved, positioning shifted, sentiment changed – the model learns what mattered and what didn't.
 
-**38 fields** captured at open only. Forward-looking context that doesn't change during a single trade: trader thesis, conviction level, trade trigger, agent reasoning, setup classification, narrative state, entity positioning, trader trading stats.
+**38 fields** captured at open only. Forward-looking context that doesn't change during a single trade: trader thesis, conviction level, trade trigger, agent reasoning, setup classification, narrative state, entity positioning, trader performance stats.
 
 **10 fields** captured at close only. Outcome metrics and trader reflection: realized P&L, process grade, exit reason, closing reason, what worked, what didn't.
 
@@ -43,8 +43,4 @@ All 140 fields are sourced directly from locally stored data. The trader's LLM r
 
 ## Why the Diff Matters
 
-The diff between open and close snapshots is the training signal. Every field that changed during the trade – and every field that didn't – becomes a feature the model can weight against the outcome.
-
-At scale, it becomes a structured database of market conditions paired with decisions and results. The model can query across thousands of trades: which positioning configurations preceded winning longs? Which funding regimes produced the best risk-adjusted entries? Which trader conviction levels correlated with follow-through? Where did agent confidence scores diverge from actual outcomes, and why?
-
-The answers aren't hypothetical. They're computed from real trades, real P&L, real market states – captured at the resolution of 140 fields, twice per trade.
+The diff between open and close snapshots is the training signal. Every field that changed during the trade – and every field that didn't – becomes a feature the model weights against the outcome. Over time, the collective intelligence engine identifies patterns: which positioning configurations preceded winning longs, which funding regimes produced the best risk-adjusted entries, which trader conviction levels correlated with follow-through, where agent confidence diverged from actual outcomes. These patterns are computed from real trades, real P&L, and real market conditions – updating the skill library continuously as more lessons accumulate.
