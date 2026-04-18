@@ -3,11 +3,11 @@ title: "Lesson Schema"
 description: "The backbone of Engram's collective intelligence"
 ---
 
-Every trade generates a lesson. This is the core data primitive of the Engram network.
+Every trade generates a lesson – a structured record of the conditions around it. Lessons are how Engram's collective intelligence engine compounds.
 
 ## Structure
 
-A lesson consists of two context snapshots (open and close), a computed diff, optional trader input, and trade metadata. The diff – what changed in the market while the position was open – is how intelligence is built.
+A lesson captures two context snapshots – one at entry, one at exit – alongside the trader's optional reasoning and the trade outcome. The multidimensional state of the market, paired with the trader's intent and the result. The diff between entry and exit is where the learning signal lives
 
 ## 140 Fields Across 15 Categories
 
@@ -44,3 +44,15 @@ All 140 fields reflect real market conditions and trader actions – not model-g
 ## Why the Diff Matters
 
 The diff between open and close snapshots is the training signal. Every field that changed during the trade – and every field that didn't – becomes a feature the model weights against the outcome. Over time, the collective intelligence engine identifies patterns: which positioning configurations preceded winning longs, which funding regimes produced the best risk-adjusted entries, which trader conviction levels correlated with follow-through, where agent confidence diverged from actual outcomes. These patterns are computed from real trades, real P&L, and real market conditions – updating the skill library continuously as more lessons accumulate.
+
+## Why This Structure
+
+The lesson schema reflects an established ML paradigm: structured state capture paired with outcome data enables systematic learning from decisions. The approach has been explored across multiple domains – most recently in financial reasoning models trained on hundreds of thousands of decision traces.
+
+What Engram brings to this paradigm:
+
+- **Real traders, real capital.** Most academic work in this space relies on synthetic agents or backtested historical data. Engram captures decisions made by humans with their own money on the line – categorically different signal quality.
+- **Multi-source context.** Research consistently shows that multi-source feature fusion outperforms single-source approaches in quantitative decision-making. The 15 categories span market structure, positioning, microstructure, sentiment, and trader psychology – each contributing independent signal.
+- **Reasoning paired with outcome.** Capturing why a trader made a decision alongside what happened is the foundation of modern financial reasoning research. It's also how humans learn from their own trades.
+
+
