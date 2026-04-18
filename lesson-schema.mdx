@@ -29,17 +29,6 @@ A lesson captures two context snapshots – one at entry, one at exit – alongs
 | Execution Quality | 6 | Slippage, fill latency, order type, fill rate, session, day of week |
 | Counterfactual Context | 5 | Top mover during hold, best alternative setup at entry, opportunity cost ranking |
 
-All 140 fields reflect real market conditions and trader actions – not model-generated content. Lesson quality depends on market conditions and the trader's input, not on which model the agent runs.
-
-## Capture Timing
-
-**88 fields** snapshotted at both entry and exit. The diff between open and close snapshots is the lesson. Price moved, positioning shifted, sentiment changed – the model learns what mattered and what didn't.
-
-**38 fields** captured at open only. Forward-looking context that doesn't change during a single trade: trader thesis, conviction level, trade trigger, agent reasoning, setup classification, narrative state, entity positioning, trader performance stats.
-
-**10 fields** captured at close only. Outcome metrics and trader reflection: realized P&L, process grade, exit reason, closing reason, what worked, what didn't.
-
-**4 fields** captured once per trade. Execution metadata: slippage, time to fill, order type, partial fill percentage.
 
 ## Why the Diff Matters
 
@@ -47,12 +36,12 @@ The diff between open and close snapshots is the training signal. Every field th
 
 ## Why This Structure
 
-The lesson schema reflects an established ML paradigm: structured state capture paired with outcome data enables systematic learning from decisions. The approach has been explored across multiple domains – most recently in financial reasoning models trained on hundreds of thousands of decision traces.
+The lesson schema reflects established research traditions applied to a novel domain.
 
-What Engram brings to this paradigm:
+- **Live-capital data addresses backtest bias.** Academic research has shown that backtested strategies systematically overstate real-world performance due to selection bias and execution frictions (Bailey & López de Prado, 2014). Engram captures lessons from live trades with real capital in real-world environment, producing training signal free from these biases.
+- **Multimodal capture reflects research on signal combination.** The mathematical foundation for combining multiple independent signals is well-established (Grinold, 1989), and recent empirical studies confirm that multimodal fusion outperforms single-source approaches in financial prediction tasks. Engram's 15 categories span market structure, positioning, microstructure, sentiment, and trader psychology, designed to maximize signal diversity.
+- **Reasoning paired with outcome extends modern reward modeling research. ** Work on process supervision (Lightman et al., 2023) has shown that training on reasoning alongside outcomes produces more reliable models than outcome-only training. The resulting state-action-reasoning-outcome data structure is compatible with offline reinforcement learning paradigms including Decision Transformer (Chen et al., 2021), behavioral cloning, and preference-based methods.
 
-- **Real traders, real capital.** Most academic work in this space relies on synthetic agents or backtested historical data. Engram captures decisions made by humans with their own money on the line – categorically different signal quality.
-- **Multi-source context.** Research consistently shows that multi-source feature fusion outperforms single-source approaches in quantitative decision-making. The 15 categories span market structure, positioning, microstructure, sentiment, and trader psychology – each contributing independent signal.
-- **Reasoning paired with outcome.** Capturing why a trader made a decision alongside what happened is the foundation of modern financial reasoning research. It's also how humans learn from their own trades.
+Engram's specific application of these principles to crypto perpetual trading with human-in-the-loop reasoning is novel. The research foundation is established; the domain application is Engram's contribution.
 
 
