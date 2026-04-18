@@ -7,7 +7,7 @@ Every trade generates a lesson – a structured record of the conditions around 
 
 ## Structure
 
-A lesson captures two context snapshots – one at entry, one at exit – alongside the trader's optional reasoning and the trade outcome. The multidimensional state of the market, paired with the trader's intent and the result. The diff between entry and exit is where the learning signal lives
+A lesson captures two context snapshots – one at entry, one at exit – alongside the trader's optional reasoning and the trade outcome. The multidimensional state of the market, paired with the trader's intent and the result. The diff between entry and exit is where the learning signal lives.
 
 ## 140 Fields Across 15 Categories
 
@@ -30,18 +30,18 @@ A lesson captures two context snapshots – one at entry, one at exit – alongs
 | Counterfactual Context | 5 | Top mover during hold, best alternative setup at entry, opportunity cost ranking |
 
 
-## Why the Diff Matters
-
-The diff between open and close snapshots is the training signal. Every field that changed during the trade – and every field that didn't – becomes a feature the model weights against the outcome. Over time, the collective intelligence engine identifies patterns: which positioning configurations preceded winning longs, which funding regimes produced the best risk-adjusted entries, which trader conviction levels correlated with follow-through, where agent confidence diverged from actual outcomes. These patterns are computed from real trades, real P&L, and real market conditions – updating the skill library continuously as more lessons accumulate.
-
 ## Why This Structure
 
 The lesson schema reflects established research traditions applied to a novel domain.
 
-- **Live-capital data addresses backtest bias.** Academic research has shown that backtested strategies systematically overstate real-world performance due to selection bias and execution frictions (Bailey & López de Prado, 2014). Engram captures lessons from live trades with real capital in real-world environment, producing training signal free from these biases.
+- **Live-capital data addresses backtest bias.** Academic research has shown that backtested strategies systematically overstate real-world performance due to selection bias and execution frictions (Bailey & López de Prado, 2014). Engram captures lessons from live trades with real capital, producing training signal that avoids the selection bias and execution-frictionless assumptions that undermine backtest-based research.
 - **Multimodal capture reflects research on signal combination.** The mathematical foundation for combining multiple independent signals is well-established (Grinold, 1989), and recent empirical studies confirm that multimodal fusion outperforms single-source approaches in financial prediction tasks. Engram's 15 categories span market structure, positioning, microstructure, sentiment, and trader psychology, designed to maximize signal diversity.
 - **Reasoning paired with outcome extends modern reward modeling research.** Work on process supervision (Lightman et al., 2023) has shown that training on reasoning alongside outcomes produces more reliable models than outcome-only training. The resulting state-action-reasoning-outcome data structure is compatible with offline reinforcement learning paradigms including Decision Transformer (Chen et al., 2021), behavioral cloning, and preference-based methods.
 
 Engram's specific application of these principles to crypto perpetual trading with human-in-the-loop reasoning is novel. The research foundation is established; the domain application is Engram's contribution.
+
+## Why the Diff Matters
+
+The diff between open and close snapshots is the training signal. Every field that changed during the trade – and every field that didn't – becomes a feature the model weights against the outcome. Over time, the collective intelligence engine identifies patterns: which positioning configurations preceded winning longs, which funding regimes produced the best risk-adjusted entries, which trader conviction levels correlated with follow-through, where agent confidence diverged from actual outcomes. These patterns are computed from real trades, real P&L, and real market conditions – updating the skill library continuously as more lessons accumulate.
 
 
