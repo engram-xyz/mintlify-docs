@@ -1,13 +1,13 @@
 ---
 title: "How It Works"
-description: The symbiosis between the human and the machine"
+description: The symbiosis between the human and the machine
 ---
 
 ## The Trader-Agent Model
 
-The agent handles everything that scales: scanning hundreds of markets, computing technical indicators, pulling cached positioning and on-chain data, detecting behavioral patterns, logging snapshots, and generating diff summaries. None of this requires language model inference at scan time. All of it is deterministic computation against APIs and local data – LLM reasoning is invoked only for the filtered shortlist and questioning.
+The agent handles everything that scales: scanning hundreds of markets, computing technical indicators, pulling positioning, sentiment and on-chain data, detecting behavioral patterns, logging snapshots, and generating diff summaries. None of this requires language model inference at scan time – it's all conventional code against aggregated and synthesized cached data streams, running continuously at negligible cost. LLM reasoning is reserved for the filtered shortlist and direct trader queries, where reasoning actually adds value.
 
-The trader provides what does not scale: a thesis explaining why a trade makes sense right now, corrections when an agent's setup misfires due to nuanced sentiment shifts, context for events not yet in the quantitative data, and a closing reflection on what the trade revealed.
+The trader provides what does not scale: a thesis explaining why a trade makes sense right now, corrections when the agent's setup misfires due to nuanced sentiment shifts, context for events not yet in the quantitative data, and a closing reflection on what the trade revealed.
 
 ## The Trade Flow
 
